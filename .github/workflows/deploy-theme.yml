@@ -22,6 +22,6 @@ jobs:
           SHOPIFY_FLAG_STORE: '${{ secrets.SHOPIFY_FLAG_STORE }}'
           # Password generated from Theme Access app
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          # Theme ID or name of the remote theme
+          # Theme ID or name of the remote themee
           SHOPIFY_FLAG_THEME_ID: ${{ secrets.SHOPIFY_FLAG_THEME_ID }}
         run: shopify theme push -u
