@@ -1,7 +1,6 @@
-name: Theme deploy
 
+name: Shopify Theme deploy
 on: [push]
-
 jobs:
   deploy:
     name: Deploy
@@ -14,14 +13,15 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1
-          bundler: 'latest'
+          bundler: "latest"
       - name: Install Shopify CLI
         run: npm install -g @shopify/cli @shopify/theme
       - name: Deploy
         env:
           # Store URL, like your-store.myshopify.com
-          SHOPIFY_FLAG_STORE: '${{ secrets.SHOPIFY_STORE }}'
+          SHOPIFY_FLAG_STORE: "${{ secrets.SHOPIFY_FLAG_STORE }}"
           # Password generated from Theme Access app
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_CLI_TTY: 0
-        run: shopify theme push --path ./shopify-theme --theme 148178764062
+          # Theme ID or name of the remote theme
+          SHOPIFY_FLAG_THEME_ID: ${{ secrets.SHOPIFY_FLAG_THEME_ID }}
+        run: shopify theme push -u
